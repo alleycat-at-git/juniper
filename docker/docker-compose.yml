@@ -1,0 +1,21 @@
+version: '3'
+services:
+  juniper:
+    image: rust
+    container_name: gateway
+    command: bash
+    volumes:
+      - ..:/app
+      - juniper_cargo_cache:/usr/local/cargo
+    ports:
+      - 8000:8000
+    stdin_open: true
+    tty: true
+
+volumes:
+  juniper_cargo_cache:
+
+networks:
+  default:
+    external:
+      name: storiqa
